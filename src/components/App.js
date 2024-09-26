@@ -8,11 +8,14 @@ import Layout from './Layout/Layout'
 const App = () => {
   return (
     <>
-    <Layout/>
+  
       <Routes>
-        <Route path='/' index element={<EventsPage/>} /> 
+        <Route path='/' element={ <Layout/>}>
+        <Route index element={<EventsPage/>} /> 
         <Route path='registration' element={<EventRegistrationPage />} />
         <Route path='participants' element={<EventParticipantsPage />} />
+        </Route>
+        
       </Routes>
     </>
   );
