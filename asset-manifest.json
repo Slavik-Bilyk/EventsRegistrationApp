@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Slavik-Bilyk/eventapp/static/css/main.a42d8108.css",
-    "main.js": "/Slavik-Bilyk/eventapp/static/js/main.b2461e2a.js",
-    "index.html": "/Slavik-Bilyk/eventapp/index.html",
-    "main.a42d8108.css.map": "/Slavik-Bilyk/eventapp/static/css/main.a42d8108.css.map",
-    "main.b2461e2a.js.map": "/Slavik-Bilyk/eventapp/static/js/main.b2461e2a.js.map"
+    "main.css": "/EventsRegistrationApp/static/css/main.a42d8108.css",
+    "main.js": "/EventsRegistrationApp/static/js/main.b2461e2a.js",
+    "index.html": "/EventsRegistrationApp/index.html",
+    "main.a42d8108.css.map": "/EventsRegistrationApp/static/css/main.a42d8108.css.map",
+    "main.b2461e2a.js.map": "/EventsRegistrationApp/static/js/main.b2461e2a.js.map"
   },
   "entrypoints": [
     "static/css/main.a42d8108.css",
