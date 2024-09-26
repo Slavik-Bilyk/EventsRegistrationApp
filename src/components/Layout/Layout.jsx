@@ -1,16 +1,19 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const Layout = () => {
   return (
-    <div>
-      <header>
-        <h1>Header</h1>
-      </header>
+    <>
+      <div>
+        <nav>
+          <NavLink to='/'>Events Page</NavLink>
+        </nav>
+      </div>
+
       <main>
-        <Outlet /> 
+        <Outlet/>
       </main>
-    </div>
+    </>
   );
 };
 

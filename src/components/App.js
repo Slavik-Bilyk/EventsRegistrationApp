@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes,Route } from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import EventsPage from '../pages/EventsPage/EventsPage'
 import EventRegistrationPage from '../pages/EventRegistrationPage/EventRegistrationPage'
 import EventParticipantsPage from '../pages/EventParticipantsPage/EventParticipantsPage'
@@ -7,13 +7,14 @@ import Layout from './Layout/Layout'
 
 const App = () => {
   return (
-    <Routes>
-      <Route path='/' element={<Layout />}>
-        <Route index element={<EventsPage />} /> 
-        <Route path='login' element={<EventRegistrationPage />} />
+    <>
+    <Layout/>
+      <Routes>
+        <Route path='/' index element={<EventsPage/>} /> 
+        <Route path='registration' element={<EventRegistrationPage />} />
         <Route path='participants' element={<EventParticipantsPage />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 }
 
