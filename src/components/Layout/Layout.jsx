@@ -6,7 +6,7 @@ const Layout = () => {
     <>
       <div >
         <nav>
-          <NavLink to='/'>Events Page</NavLink>
+          <NavLink to='/'>Events Pages</NavLink>
         </nav>
       </div>
 

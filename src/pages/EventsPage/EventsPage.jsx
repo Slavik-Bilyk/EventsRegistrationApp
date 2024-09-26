@@ -5,7 +5,7 @@ const EventsPage = () => {
   return (
     <div>
       EventsPage
-     
+     <NavLink to='registration'>log</NavLink>
     </div>
   )
 }
