@@ -1,24 +1,22 @@
-import React from 'react'
-import { Routes, Route} from 'react-router-dom'
-import EventsPage from '../pages/EventsPage/EventsPage'
-import EventRegistrationPage from '../pages/EventRegistrationPage/EventRegistrationPage'
-import EventParticipantsPage from '../pages/EventParticipantsPage/EventParticipantsPage'
-import Layout from './Layout/Layout'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import EventsPage from '../pages/EventsPage/EventsPage'; // Ваша головна сторінка
+import EventRegistrationPage from '../pages/EventRegistrationPage/EventRegistrationPage';
+import EventParticipantsPage from '../pages/EventParticipantsPage/EventParticipantsPage';
+import Layout from './Layout/Layout';
 
 const App = () => {
   return (
-    <>
-  
-      <Routes>
-        <Route path='/' element={ <Layout/>}>
-        <Route index element={<EventsPage/>} /> 
-        <Route path='registration' element={<EventRegistrationPage />} />
-        <Route path='participants' element={<EventParticipantsPage />} />
-        </Route>
-        
-      </Routes>
-    </>
+    <Routes>
+      <Route path='/' element={<EventsPage />} index /> 
+      
+      <Route element={<Layout />}> 
+        <Route path='/registration' element={<EventRegistrationPage />} />
+        <Route path='/participants' element={<EventParticipantsPage />} />
+      </Route>
+      
+    </Routes>
   );
-}
+};
 
 export default App;
