@@ -4,7 +4,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 const Layout = () => {
   return (
     <>
-      <div>
+      <div >
         <nav>
           <NavLink to='/'>Events Page</NavLink>
         </nav>
