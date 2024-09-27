@@ -1,41 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import EventsCard from '../../components/EventsCard/EventsCard'; 
-import styles from './EventsPage.module.css';
+import EventsCard from '../../components/EventsCard/EventsCard'
+import styles from './EventsPage.module.css'
 
 const EventsPage = () => {
-  const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState([]);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchEvents = () => {
-      fetch('http://localhost:3000/api/events')
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then((data) => setEvents(data))
-        .catch((error) => console.error('Error fetching events:', error));
+    const fetchEvents = async () => {
+        try {
+            
+            const response = await fetch('http://localhost:3000/api/events');
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+            setEvents(data);
+        } catch (err) {
+            setError(err.message);
+            console.error('Error fetching events:', err);
+        }
     };
-    console.log(events);
 
-    fetchEvents(); 
-  }, []);
+    useEffect(() => {
+        fetchEvents();
+    }, []);
 
+    return (
+        <div>
+            <h1>Events</h1>
 
-  return (
-    <div className={styles.container}>
-      <h1>Events</h1>
-      <ul>
-        {events.map((event) => (
-         <div>
-          <h1>{event.name}</h1>
-          <h1>{event.date}</h1>
-         </div>
-        ))}
-      </ul>
-    </div>
-  );
+            <div className={styles.container}>
+                
+                <EventsCard events={events}/>
+            </div>
+        </div>
+    );
 };
 
 export default EventsPage;

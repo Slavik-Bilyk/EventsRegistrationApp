@@ -1,7 +1,34 @@
 const events = [
-    { id: 1, name: 'Event 1', date: '2024-09-27' },
-    { id: 2, name: 'Event 2', date: '2024-09-28' },
-  ];
-  
-  module.exports = { events };
-  
+  { name: "Tech Conference 2024", description: "A conference on the latest in technology.", date: "2024-10-15 12:00", organizer: "TechCorp" },
+  { name: "AI Expo 2024", description: "Explore the advancements in AI.", date: "2024-11-05 10:00", organizer: "AI Innovators" },
+  { name: "Blockchain Summit", description: "Learn about blockchain and its applications.", date: "2024-12-01 09:30", organizer: "CryptoWorld" },
+  { name: "Cybersecurity Forum", description: "Stay updated on cybersecurity trends.", date: "2024-10-20 14:00", organizer: "SecureTech" },
+  { name: "Web Dev Workshop", description: "Hands-on workshop on web development.", date: "2024-09-30 11:00", organizer: "CodeMasters" },
+  { name: "Tech Startups Pitch", description: "Pitch event for emerging tech startups.", date: "2024-12-12 13:30", organizer: "Startup Hub" },
+  { name: "Cloud Computing Seminar", description: "Seminar on the latest cloud solutions.", date: "2024-10-25 09:00", organizer: "CloudX" },
+  { name: "IoT Innovations Conference", description: "Discover the future of IoT.", date: "2024-11-02 15:00", organizer: "IoT Ventures" },
+  { name: "Big Data Analytics Workshop", description: "Workshop on big data and analytics.", date: "2024-11-15 10:30", organizer: "DataPros" },
+  { name: "5G Technology Meetup", description: "Meetup discussing 5G and its impact.", date: "2024-12-05 12:30", organizer: "5G Networks" },
+  { name: "Green Tech Symposium", description: "Sustainable tech solutions for the future.", date: "2024-10-18 16:00", organizer: "EcoTech" },
+  { name: "Quantum Computing Summit", description: "Dive into quantum computing.", date: "2024-11-10 09:00", organizer: "Quantum Labs" },
+  { name: "Autonomous Vehicles Expo", description: "Exhibition of autonomous vehicle tech.", date: "2024-11-20 13:00", organizer: "AutoDrive" },
+  { name: "Tech Careers Fair", description: "Career opportunities in the tech sector.", date: "2024-12-01 10:00", organizer: "CareerTech" },
+  { name: "Startup Networking Event", description: "Networking for startup enthusiasts.", date: "2024-10-28 17:30", organizer: "Innovators United" },
+  { name: "Virtual Reality Summit", description: "Explore the world of virtual reality.", date: "2024-11-25 11:00", organizer: "VR World" },
+  { name: "AR Development Workshop", description: "Workshop on augmented reality development.", date: "2024-12-10 14:00", organizer: "AR Pioneers" },
+  { name: "FinTech Conference 2024", description: "A deep dive into financial technology.", date: "2024-10-15 09:30", organizer: "FinTech Innovators" },
+  { name: "Tech Product Launch", description: "Launch event for a new tech product.", date: "2024-11-22 10:00", organizer: "InnovateTech" },
+  { name: "Robotics Expo 2024", description: "Exhibition showcasing the latest in robotics.", date: "2024-12-15 11:30", organizer: "RoboTech" },
+  { name: "Mobile App Development Workshop", description: "Learn how to develop mobile apps.", date: "2024-10-10 10:00", organizer: "AppMasters" },
+  { name: "Tech Entrepreneurship Forum", description: "Forum for tech entrepreneurs and investors.", date: "2024-11-18 14:00", organizer: "TechVentures" },
+  { name: "AI Ethics Panel", description: "Discussion on ethics in AI development.", date: "2024-12-03 12:00", organizer: "Ethical AI" },
+  { name: "Smart Home Tech Meetup", description: "Discover innovations in smart home technology.", date: "2024-10-22 18:00", organizer: "SmartHome Innovations" },
+  { name: "Tech Design Summit", description: "Explore the intersection of tech and design.", date: "2024-11-28 09:00", organizer: "DesignTech" },
+  { name: "SaaS Growth Conference", description: "Conference on scaling SaaS businesses.", date: "2024-12-08 13:00", organizer: "SaaS Growth" },
+  { name: "DevOps Workshop", description: "Practical workshop on DevOps practices.", date: "2024-11-07 10:30", organizer: "DevOps Experts" },
+  { name: "EdTech Innovations Forum", description: "Forum on innovations in educational technology.", date: "2024-12-14 15:30", organizer: "EdTech Leaders" },
+  { name: "Women in Tech Conference", description: "Empowering women in the tech industry.", date: "2024-10-25 13:00", organizer: "WomenInTech" },
+  { name: "E-commerce Tech Summit", description: "Latest trends in e-commerce technology.", date: "2024-11-12 09:30", organizer: "Ecom Leaders" }
+];
+
+module.exports = { events };

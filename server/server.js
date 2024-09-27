@@ -24,6 +24,6 @@ app.use((err, req, res, next) => {
   res.status(500).send('Щось пішло не так!'); 
 });
 
-app.listen(PORT, () => {
-  console.log(`Сервер працює на порту ${PORT}`);
+app.listen(3000, () => {
+    
 });

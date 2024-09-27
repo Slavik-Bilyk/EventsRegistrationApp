@@ -2,6 +2,10 @@ import React from 'react'
 import styles from './EventParticipantsPage.module.css'
 
 const EventParticipantsPage = () => {
+
+
+
+  
   return (
     <div>
      <h1>"Art Exhibition" participants</h1>
