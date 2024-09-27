@@ -74,6 +74,10 @@
     height: 50px;
     border-radius: 5px;
   }
+
+  .button a {
+    color: #fff;
+  }
   
   .button:hover {
     background-color: #0056b3;

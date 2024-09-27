@@ -1,42 +1,146 @@
-import React from 'react';
-import styles from './EventRegistrationPage.module.css'
+import React, { useState } from 'react';
+import styles from './EventRegistrationPage.module.css';
 
 const EventRegistrationPage = () => {
-    return (
-      <div className={styles.container}>
-        <h1 className={styles.heading}>Event Registration</h1>
-        <form className={styles.form}>
-          <label htmlFor="name" className={styles.label}>
-            Full Name:
-            <input id="name" name="name" type="text" required className={styles.input} />
-          </label>
-          <label htmlFor="email" className={styles.label}>
-            Email:
-            <input id="email" name="email" type="email" required className={styles.input} />
-          </label>
-          <label htmlFor="birthday" className={styles.label}>
-            Birthday:
-            <input id="birthday" name="birthday" type="date" required className={styles.input} />
-          </label>
-          <fieldset className={styles.fieldset}>
-            <legend className={styles.legend}>Where did you hear about this event?</legend>
-            <label className={styles.checkboxLabel}>
-              <input className={styles.checkboxInput} type="checkbox" name="source" value="social_media" />
-              Social Media
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input className={styles.checkboxInput} type="checkbox" name="source" value="friends" />
-              Friends
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input className={styles.checkboxInput} type="checkbox" name="source" value="newsletter" />
-              Newsletter
-            </label>
-          </fieldset>
-          <button type="submit" className={styles.button}>Register</button>
-        </form>
-      </div>
-    );
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    birthday: '',
+    source: [],
+  });
+
+
+  const handleChange = (e) => {
+    const { name, value, type } = e.target;
+
+    if (type === 'radio') {
+      setFormData((prevData) => ({
+        ...prevData,
+        source: prevData.source.includes(value)
+          ? prevData.source.filter((src) => src !== value)
+          : [...prevData.source, value],
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
-  
-  export default EventRegistrationPage;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log(formData);
+
+
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      console.log(data);
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
+    setFormData({
+      name: '',
+      email: '',
+      birthday: '',
+      source: [],
+    })
+
+  };
+
+
+
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.heading}>Event Registration</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label htmlFor="name" className={styles.label}>
+          Full Name:
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            className={styles.input}
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="email" className={styles.label}>
+          Email:
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            className={styles.input}
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="birthday" className={styles.label}>
+          Birthday:
+          <input
+            id="birthday"
+            name="birthday"
+            type="date"
+            required
+            className={styles.input}
+            value={formData.birthday}
+            onChange={handleChange}
+          />
+        </label>
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.legend}>Where did you hear about this event?</legend>
+          <label className={styles.checkboxLabel}>
+            <input
+              className={styles.checkboxInput}
+              type="radio"
+              name="source"
+              value="social_media"
+              onChange={handleChange}
+            />
+            Social Media
+          </label>
+          <label className={styles.checkboxLabel}>
+            <input
+              className={styles.checkboxInput}
+              type="radio"
+              name="source"
+              value="friends"
+              onChange={handleChange}
+            />
+            Friends
+          </label>
+          <label className={styles.checkboxLabel}>
+            <input
+              className={styles.checkboxInput}
+              type="radio"
+              name="source"
+              value="newsletter"
+              onChange={handleChange}
+            />
+            Newsletter
+          </label>
+        </fieldset>
+        <button type="submit" className={styles.button}>
+          Register
+        </button>
+      </form>
+    </div>
+  );
+};
+
+
+export default EventRegistrationPage;

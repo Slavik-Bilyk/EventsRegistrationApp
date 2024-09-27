@@ -1,17 +1,16 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import styles from './Layout.module.css'
 
 const Layout = () => {
   return (
     <>
-      <div className={styles.container} >
+      <div >
         <nav>
           <NavLink to='/'>Events Pages</NavLink>
         </nav>
       </div>
 
-      <main className={styles.container}>
+      <main>
         <Outlet/>
       </main>
     </>
