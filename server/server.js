@@ -17,8 +17,12 @@ const users = [];
 
 app.post('/api/register', (req, res) => {
   const newUser = req.body;
-  users.push(newUser);
-  res.status(201).json(newUser);
+
+  const eventId = events.find(event => event.name === 'Event Name').id; 
+
+  users.push({ ...newUser, eventId });  
+
+  res.status(201).json({ newUser, eventId });  
 });
 
 app.get('/api/users', (req, res) => {
