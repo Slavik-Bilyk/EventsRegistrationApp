@@ -11,7 +11,7 @@ const App = () => {
       <Route path='/' element={<EventsPage />} index /> 
       
       <Route element={<Layout />}> 
-        <Route path='/registration' element={<EventRegistrationPage />} />
+        <Route path='/register/:id' element={<EventRegistrationPage />} />
         <Route path='/events/:id' element={<EventParticipantsPage />} />
       </Route>
       

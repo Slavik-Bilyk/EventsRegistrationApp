@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom'; 
 import styles from './EventRegistrationPage.module.css';
 
 const EventRegistrationPage = () => {
+  const { id } = useParams(); 
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -33,6 +36,7 @@ const EventRegistrationPage = () => {
       fullname: name,
       email,
       birthday,
+      eventId: id, 
     };
 
     try {
@@ -45,23 +49,24 @@ const EventRegistrationPage = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Error registering user');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Error registering user');
       }
 
       const data = await response.json();
       console.log(data);
+      navigate(`/events/${id}`); 
+      setFormData({
+        name: '',
+        email: '',
+        birthday: '',
+        source: '',
+      });
 
     } catch (error) {
       console.error('Error:', error);
-      alert('Не вдалося зареєструвати користувача. Спробуйте ще раз.');
+      alert(`Не вдалося зареєструвати користувача. Причина: ${error.message}`);
     }
-
-    setFormData({
-      name: '',
-      email: '',
-      birthday: '',
-      source: '',
-    });
   };
 
   return (

@@ -14,7 +14,7 @@ const EventsCard = ({events}) => {
             <p>Organizer: {event.organizer}</p>
            <div className={styles.nav}>
                 <Link to={`/events/${event.id}`}>View</Link>
-                <Link to='registration'>Register</Link>
+                <Link to={`/register/${event.id}`}>Register</Link>
            </div>
         </div>
       ))}
