@@ -6,9 +6,8 @@ const EventRegistrationPage = () => {
     name: '',
     email: '',
     birthday: '',
-    source: [],
+    source: '',
   });
-
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -16,9 +15,7 @@ const EventRegistrationPage = () => {
     if (type === 'radio') {
       setFormData((prevData) => ({
         ...prevData,
-        source: prevData.source.includes(value)
-          ? prevData.source.filter((src) => src !== value)
-          : [...prevData.source, value],
+        source: value,
       }));
     } else {
       setFormData((prevData) => ({
@@ -31,35 +28,41 @@ const EventRegistrationPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(formData);
-
+    const { name, email, birthday } = formData; 
+    const newUser = {
+      fullname: name,
+      email,
+      birthday,
+    };
 
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch('http://localhost:3000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(newUser), 
       });
+
+      if (!response.ok) {
+        throw new Error('Error registering user');
+      }
 
       const data = await response.json();
       console.log(data);
-      
+
     } catch (error) {
       console.error('Error:', error);
+      alert('Не вдалося зареєструвати користувача. Спробуйте ще раз.');
     }
 
     setFormData({
       name: '',
       email: '',
       birthday: '',
-      source: [],
-    })
-
+      source: '',
+    });
   };
-
-
 
   return (
     <div className={styles.container}>
@@ -141,6 +144,5 @@ const EventRegistrationPage = () => {
     </div>
   );
 };
-
 
 export default EventRegistrationPage;

@@ -10,13 +10,19 @@ app.use(bodyParser.json());
 
 app.get('/api/events', (req, res) => {
   console.log('Запит на /api/events отримано');
-  return res.json(events); 
+  res.json(events);
 });
 
-app.post('/api/events', (req, res) => {
-  const newEvent = req.body;
-  events.push(newEvent);
-  res.status(201).json(newEvent);
+const users = [];
+
+app.post('/api/register', (req, res) => {
+  const newUser  = req.body;
+  users.push(newUser);
+  res.status(201).json(newUser);
+});
+
+app.get('/api/users', (req, res) => {
+  res.json(users);
 });
 
 app.use((err, req, res, next) => {
