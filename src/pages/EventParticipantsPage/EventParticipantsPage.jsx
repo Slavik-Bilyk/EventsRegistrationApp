@@ -1,32 +1,58 @@
-import React from 'react'
-import styles from './EventParticipantsPage.module.css'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import styles from './EventParticipantsPage.module.css'; 
+const EventsPage = () => {
+  const { id } = useParams();  
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-const EventParticipantsPage = () => {
+  useEffect(() => {
+    const fetchEvent = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/events/${id}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch event details');
+        }
+        const data = await response.json();
+        setEvent(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchEvent();
+  }, [id]);
 
+  if (loading) {
+    return <div className={styles.loading}>Loading event details...</div>;
+  }
 
-  
+  if (error) {
+    return <div className={styles.error}>Error: {error}</div>;
+  }
+
   return (
-    <div>
-     <h1>"Art Exhibition" participants</h1>
-     <div className={styles.blockFilter}>
-        <h2>Filters: </h2>
+    <div className={styles.eventsPage}>
+      <h1>{event.name}</h1>
+      <div className={styles.block}>
+        <h2>Filters:</h2>
         <form className={styles.form}>
-            <label className={styles.label}>
-                Full name
-                <input className={styles.input}/>
-            </label>
-            
-            <label className={styles.label}>
-                email
-                <input className={styles.input}/>
-            </label>
-
-            <button type='submit' className={styles.button}>Reset fillters</button>
+          <label className={styles.label}>
+            Full Name
+            <input type="text" name="fullName" className={styles.input} />
+          </label>
+          <label className={styles.label}>
+            Email
+            <input type="email" name="email" className={styles.input} />
+          </label>
+          <button type="button" className={styles.button}>Reset Filters</button>
         </form>
-     </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default EventParticipantsPage
+export default EventsPage;

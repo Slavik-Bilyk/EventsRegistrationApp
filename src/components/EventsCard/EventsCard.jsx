@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styles from './EventsCard.module.css'
 
 const EventsCard = ({events}) => {
@@ -13,8 +13,8 @@ const EventsCard = ({events}) => {
             <p>Date: {event.date}</p>
             <p>Organizer: {event.organizer}</p>
            <div className={styles.nav}>
-                <NavLink to='participants'>View</NavLink>
-                <NavLink to='registration'>Register</NavLink>
+                <Link to={`/events/${event.id}`}>View</Link>
+                <Link to='registration'>Register</Link>
            </div>
         </div>
       ))}

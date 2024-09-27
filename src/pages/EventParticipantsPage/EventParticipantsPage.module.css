@@ -1,46 +1,35 @@
-.blockFilter {
+.eventsPage {
+    margin: 0 auto;
+    max-width: 1280px;
+  }
+  
+
+  .block {
     display: flex;
     text-align: center;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
-}
+    gap: 50px;
+  }
 
-.form {
+  .form {
     display: flex;
     gap: 30px;
-}
+  }
 
-.input {
-    margin-left: 10px;
-    height: 30px;
-}
-
-.button {
+  .button {
+    width: 120px;
     background-color: #007bff;
     color: #fff;
-    border-radius: 5px;
-    border: none;
     font-weight: 700;
-}
+    font-size: 15px;
+    height: 35px;
+  }
 
-@media (max-width: 480px) {
+  .input {
+    height: 30px;
+    width: 250px;
+    margin-left: 10px;
+  }
 
-    .blockFilter {
-        padding: 0 15px;
-    }
-
-    .form {
-        gap: 0;
-        flex-wrap: wrap;
-    }
-
-    .input {
-        margin-top: 25px;
-    }
-
-    .button {
-        margin-left: 50px;
-    }
-
-}
+  
+ 
