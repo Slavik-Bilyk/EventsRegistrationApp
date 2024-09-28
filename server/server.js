@@ -16,23 +16,23 @@ app.get('/api/events', (req, res) => {
 const users = [];
 
 app.post('/api/register', (req, res) => {
-  const { eventId } = req.body;
+  const { eventId, fullname, email, birthday } = req.body;
 
-  // Пошук події за ID
-  // const event = events.find(event => event.id === eventId);
+  const newUser = { fullname, email, birthday };
 
-  // Якщо подію не знайдено
-  // if (!event) {
-  //   return res.status(404).json({ message: 'Event not found' });
-  // }
+  const event = events.find(ev => ev.id === eventId);
+  if (!event) {
+    return res.status(404).json({ message: 'Подію не знайдено' });
+  }
 
-  const newUser = req.body;
+  event.users.push(newUser);
+  
 
-  users.push({ ...newUser });
+  users.push(newUser);
+
   console.log(users);
-  res.status(201).json({ newUser, eventId });
+  res.status(201).json({ message: 'Користувача успішно зареєстровано', newUser, eventId });
 });
-
 
 app.get('/api/users', (req, res) => {
   res.json(users);
@@ -45,7 +45,7 @@ app.get('/api/events/:id', (req, res) => {
   if (event) {
     res.json(event);
   } else {
-    res.status(404).json({ message: 'Event not found' });
+    res.status(404).json({ message: 'Подію не знайдено' });
   }
 });
 
