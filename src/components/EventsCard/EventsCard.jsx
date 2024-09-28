@@ -7,7 +7,7 @@ const EventsCard = ({events}) => {
     <div className={styles.bg}>
 
         {events.map((event) => (
-        <div className={styles.cardBlock}>
+        <div key={event.id} className={styles.cardBlock}>
             <h2>{event.name}</h2>
             <p>{event.description}</p>
             <p>Date: {event.date}</p>

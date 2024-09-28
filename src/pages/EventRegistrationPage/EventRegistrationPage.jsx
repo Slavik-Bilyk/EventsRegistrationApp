@@ -31,6 +31,8 @@ const EventRegistrationPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
+
     const { name, email, birthday } = formData; 
     const newUser = {
       fullname: name,
@@ -38,6 +40,8 @@ const EventRegistrationPage = () => {
       birthday,
       eventId: id, 
     };
+
+  
 
     try {
       const response = await fetch('http://localhost:3000/api/register', {
@@ -55,13 +59,8 @@ const EventRegistrationPage = () => {
 
       const data = await response.json();
       console.log(data);
+
       navigate(`/events/${id}`); 
-      setFormData({
-        name: '',
-        email: '',
-        birthday: '',
-        source: '',
-      });
 
     } catch (error) {
       console.error('Error:', error);

@@ -16,14 +16,23 @@ app.get('/api/events', (req, res) => {
 const users = [];
 
 app.post('/api/register', (req, res) => {
+  const { eventId } = req.body;
+
+  // Пошук події за ID
+  // const event = events.find(event => event.id === eventId);
+
+  // Якщо подію не знайдено
+  // if (!event) {
+  //   return res.status(404).json({ message: 'Event not found' });
+  // }
+
   const newUser = req.body;
 
-  const eventId = events.find(event => event.name === 'Event Name').id; 
-
-  users.push({ ...newUser, eventId });  
-
-  res.status(201).json({ newUser, eventId });  
+  users.push({ ...newUser });
+  console.log(users);
+  res.status(201).json({ newUser, eventId });
 });
+
 
 app.get('/api/users', (req, res) => {
   res.json(users);
