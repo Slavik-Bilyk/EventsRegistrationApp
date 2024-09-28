@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './EventParticipantsPage.module.css'; 
+
 const EventsPage = () => {
   const { id } = useParams();  
   const [event, setEvent] = useState(null);
@@ -50,6 +51,19 @@ const EventsPage = () => {
           </label>
           <button type="button" className={styles.button}>Reset Filters</button>
         </form>
+        
+        {event.users && event.users.length > 0 ? (
+          <div className={styles.participantsList}>
+          {event.users.map((user) => (
+            <div key={user.id} className={styles.user}>
+            <h2>{user.fullname}</h2>
+            <p>{user.email}</p>
+            </div>
+          ))}
+          </div>
+          ) : (
+        <p>No participants registered for this event yet.</p>
+            )}
       </div>
     </div>
   );

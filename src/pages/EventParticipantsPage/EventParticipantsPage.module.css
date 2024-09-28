@@ -32,4 +32,17 @@
   }
 
   
- 
+ .participantsList{
+  display: flex;
+  width: 200px;
+  justify-content: center;
+  position: absolute;
+  gap: 50px;
+  top: 250px;
+ }
+
+ .user {
+  border: 1px solid #000;
+  display: block;
+  padding: 20px;
+ }

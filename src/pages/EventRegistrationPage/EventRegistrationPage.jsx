@@ -31,42 +31,37 @@ const EventRegistrationPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
-
     const { name, email, birthday } = formData; 
     const newUser = {
-      fullname: name,
-      email,
-      birthday,
-      eventId: id, 
+        fullname: name,
+        email,
+        birthday,
+        eventId: Number(id), 
     };
 
-  
-
     try {
-      const response = await fetch('http://localhost:3000/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newUser), 
-      });
+        const response = await fetch('http://localhost:3000/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newUser), 
+        });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Error registering user');
-      }
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Error registering user');
+        }
 
-      const data = await response.json();
-      console.log(data);
-
-      navigate(`/events/${id}`); 
+        const data = await response.json();
+        console.log(data);
+        navigate(`/events/${newUser.eventId}`);
 
     } catch (error) {
-      console.error('Error:', error);
-      alert(`Не вдалося зареєструвати користувача. Причина: ${error.message}`);
+        console.error('Error:', error);
+        alert(`Не вдалося зареєструвати користувача. Причина: ${error.message}`);
     }
-  };
+};
 
   return (
     <div className={styles.container}>
